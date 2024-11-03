@@ -76,6 +76,11 @@ public class Calculator {
      */
     public void pressUnaryOperationKey(String operation) {
 
+        if (!latestOperation.isEmpty() && !screen.equals("0")) {
+            screen = "Error"; // Zeigt einen Fehler an, wenn eine neue Operation eingegeben wird, ohne die vorherige zu beenden
+            return;
+        }
+
         latestValue = Double.parseDouble(screen);
         latestOperation = operation;
         var result = switch (operation) {
