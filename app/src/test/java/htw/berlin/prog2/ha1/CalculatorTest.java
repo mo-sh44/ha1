@@ -130,17 +130,17 @@ class CalculatorTest {
 
 
     @Test
-    @DisplayName("should correctly display result after adding a negative and a positive number")
-    void testNegativeAddition() {
+    @DisplayName("should correctly handle addition between positive and negative numbers")
+    void testPositiveAndNegativeAddition() {
         Calculator calc = new Calculator();
 
-        calc.pressNegativeKey();
-        calc.pressDigitKey(5);
+        calc.pressDigitKey(7);
         calc.pressBinaryOperationKey("+");
+        calc.pressNegativeKey();
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
-        String expected = "-2";
+        String expected = "4"; // 7 + (-3) = 4
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
