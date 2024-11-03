@@ -111,6 +111,40 @@ class CalculatorTest {
     }
 
 
+    //Teilaufgabe 2: Zwei Roter Testen hinzufügen
+    @Test
+    @DisplayName("should display error when a non-numeric key is pressed")
+    void testNonNumericInput() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressUnaryOperationKey("x");
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
+    @DisplayName("should correctly display result after adding a negative and a positive number")
+    void testNegativeAddition() {
+        Calculator calc = new Calculator();
+
+        calc.pressNegativeKey();
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "-2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 
 
 }
